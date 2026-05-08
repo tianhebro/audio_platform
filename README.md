@@ -72,6 +72,9 @@ npm run preview
    - `npm install`
    - `VITE_BASE_PATH=/${{ github.event.repository.name }}/ npm run build`
    - 上传 `dist/` 到 GitHub Pages
+
+> 说明：当前仓库未提交 `package-lock.json`，因此 workflow 不启用 `actions/setup-node` 的 npm cache；否则 GitHub Actions 会因为找不到 lockfile 报 `Dependencies lock file is not found`。如果你后续在本地成功执行 `npm install` 并提交 `package-lock.json`，可以再把 `cache: npm` 加回 workflow。
+
 6. 部署完成后访问：
 
 ```text
