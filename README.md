@@ -73,7 +73,7 @@ npm run preview
    - `VITE_BASE_PATH=/${{ github.event.repository.name }}/ npm run build`
    - 上传 `dist/` 到 GitHub Pages
 
-> 说明：当前仓库未提交 `package-lock.json`，因此 workflow 不启用 `actions/setup-node` 的 npm cache；否则 GitHub Actions 会因为找不到 lockfile 报 `Dependencies lock file is not found`。如果你后续在本地成功执行 `npm install` 并提交 `package-lock.json`，可以再把 `cache: npm` 加回 workflow。
+> 说明：仓库已提交 `package-lock.json`，可避免 GitHub Actions 在启用 npm cache 或依赖检测时出现 `Dependencies lock file is not found`。workflow 同时设置了 `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`，用于提前切换 JavaScript Actions 到 Node.js 24 运行时，消除 Node.js 20 deprecation warning。
 
 6. 部署完成后访问：
 
