@@ -34,17 +34,18 @@ export function Resources() {
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-8 md:px-6">
-      <div className="mb-6 text-sm text-slate-400">AudioSphere / 资源 / 数据集</div>
+      <div className="mb-6 text-sm text-blue-500">AudioSphere / 资源 / 数据集</div>
       <div className="mb-8">
-        <h1 className="text-4xl font-semibold tracking-tight text-slate-950">资源库</h1>
+        <span className="badge">Resources</span>
+        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950">资源库</h1>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
           收集开放音频数据集、模型、论文、Benchmark 与工具，按任务和研究方向组织。
         </p>
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1fr_260px]">
-        <div className="min-w-0 overflow-hidden rounded-md border border-slate-200 bg-white">
-          <div className="border-b border-slate-200 p-4">
+        <div className="panel min-w-0 overflow-hidden">
+          <div className="border-b border-blue-100 bg-gradient-to-r from-blue-50 to-white p-4">
             <SearchBar value={query} onChange={setQuery} placeholder="搜索数据集、模型、论文、Benchmark、工具..." />
             <div className="mt-4 flex flex-wrap gap-2">
               {resourceKinds.map((item) => (
@@ -52,7 +53,7 @@ export function Resources() {
                   key={item}
                   onClick={() => setKind(item)}
                   className={`h-8 rounded-md px-3 text-sm font-medium transition ${
-                    kind === item ? 'bg-slate-950 text-white' : 'border border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
+                    kind === item ? 'bg-blue-600 text-white shadow-sm' : 'border border-blue-100 bg-white text-slate-600 hover:bg-blue-50 hover:text-blue-700'
                   }`}
                 >
                   {item}
@@ -61,7 +62,7 @@ export function Resources() {
             </div>
           </div>
 
-          <div className="hidden border-b border-slate-200 bg-slate-50 px-5 py-3 text-xs font-semibold text-slate-400 lg:grid lg:grid-cols-[1fr_150px_120px_110px]">
+          <div className="hidden border-b border-blue-100 bg-blue-50/60 px-5 py-3 text-xs font-semibold text-blue-500 lg:grid lg:grid-cols-[1fr_150px_120px_110px]">
             <span>资源名称</span>
             <span>任务</span>
             <span>规模</span>
@@ -75,11 +76,11 @@ export function Resources() {
 
         <aside className="space-y-5">
           {taxonomy.map((group) => (
-            <section key={group.title} className="rounded-md border border-slate-200 bg-white p-4">
+            <section key={group.title} className="panel p-4">
               <h2 className="text-sm font-semibold text-slate-950">{group.title}</h2>
               <div className="mt-3 grid gap-2">
                 {group.items.map((item) => (
-                  <button key={item} className="text-left text-sm text-slate-500 transition hover:text-slate-950">
+                  <button key={item} className="text-left text-sm text-slate-500 transition hover:text-blue-700">
                     {item}
                   </button>
                 ))}

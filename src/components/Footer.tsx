@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-blue-100 bg-white">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-[1.5fr_1fr_1fr] md:px-6">
         <div>
-          <p className="text-lg font-semibold text-slate-950">AudioSphere</p>
+          <p className="text-lg font-semibold text-blue-700">AudioSphere</p>
           <p className="mt-3 max-w-md text-sm leading-6 text-slate-500">
             学习、理解、实践，与社区一起构建声音 AI 的开放资源索引。
           </p>
@@ -27,7 +27,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-slate-200 px-4 py-4 text-center text-xs text-slate-400">© 2026 AudioSphere</div>
+      <div className="border-t border-blue-100 px-4 py-4 text-center text-xs text-blue-400">© 2026 AudioSphere</div>
     </footer>
   );
 }

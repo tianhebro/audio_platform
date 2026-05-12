@@ -46,15 +46,15 @@ const navGroups = [
 
 export function Layout() {
   return (
-    <div className="min-h-screen bg-[#f7f8fb] text-slate-900">
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 border-r border-slate-200 bg-white lg:flex lg:flex-col">
-        <Link to="/" className="flex h-16 items-center gap-3 border-b border-slate-200 px-5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-slate-950 text-white">
+    <div className="app-shell min-h-screen text-slate-900">
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 border-r border-blue-100 bg-white lg:flex lg:flex-col">
+        <Link to="/" className="flex h-16 items-center gap-3 border-b border-blue-100 px-5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-to-br from-blue-600 to-violet-600 text-white shadow-[0_10px_24px_rgba(59,130,246,0.28)]">
             <Sparkles className="h-4 w-4" />
           </span>
           <span>
-            <span className="block text-base font-semibold leading-5">AudioSphere</span>
-            <span className="block text-xs text-slate-500">声音 AI 资源社区</span>
+            <span className="block text-base font-semibold leading-5 text-slate-950">AudioSphere</span>
+            <span className="block text-xs text-blue-600">声音 AI 资源社区</span>
           </span>
         </Link>
 
@@ -73,8 +73,8 @@ export function Layout() {
                       className={({ isActive }) =>
                         `flex h-10 items-center gap-3 rounded-md px-3 text-sm transition ${
                           isActive
-                            ? 'bg-slate-950 text-white'
-                            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-950'
+                            ? 'bg-blue-600 text-white shadow-sm'
+                            : 'text-slate-600 hover:bg-blue-50 hover:text-blue-700'
                         }`
                       }
                     >
@@ -88,40 +88,40 @@ export function Layout() {
           ))}
         </nav>
 
-        <div className="border-t border-slate-200 p-4">
-          <div className="rounded-md border border-slate-200 bg-slate-50 p-3">
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+        <div className="border-t border-blue-100 p-4">
+          <div className="rounded-md border border-blue-100 bg-blue-50/70 p-3">
+            <div className="flex items-center gap-2 text-sm font-semibold text-blue-800">
               <LifeBuoy className="h-4 w-4" />
               数据集支持
             </div>
-            <p className="mt-2 text-xs leading-5 text-slate-500">提交音频数据、模型和论文线索，完善社区索引。</p>
+            <p className="mt-2 text-xs leading-5 text-slate-600">提交音频数据、模型和论文线索，完善社区索引。</p>
           </div>
         </div>
       </aside>
 
       <div className="lg:pl-64">
-        <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+        <header className="sticky top-0 z-30 border-b border-blue-100 bg-white/90 backdrop-blur">
           <div className="flex h-16 items-center justify-between gap-4 px-4 md:px-6">
             <div className="flex items-center gap-3">
-              <button className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-600 lg:hidden">
+              <button className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-100 text-blue-700 lg:hidden">
                 <Menu className="h-4 w-4" />
               </button>
-              <div className="hidden items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500 md:flex md:w-[360px]">
-                <Search className="h-4 w-4" />
+              <div className="hidden items-center gap-2 rounded-md border border-blue-100 bg-blue-50/60 px-3 py-2 text-sm text-slate-500 md:flex md:w-[360px]">
+                <Search className="h-4 w-4 text-blue-600" />
                 <span>搜索数据集、模型、论文、Benchmark</span>
-                <kbd className="ml-auto rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[11px] text-slate-400">⌘K</kbd>
+                <kbd className="ml-auto rounded border border-blue-100 bg-white px-1.5 py-0.5 text-[11px] text-blue-400">⌘K</kbd>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
               <a
-                className="hidden h-9 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-950 sm:inline-flex"
+                className="hidden h-9 items-center gap-2 rounded-md border border-blue-100 bg-white px-3 text-sm font-medium text-slate-600 transition hover:bg-blue-50 hover:text-blue-700 sm:inline-flex"
                 href="https://github.com"
               >
                 <Github className="h-4 w-4" />
                 GitHub
               </a>
-              <Link className="inline-flex h-9 items-center gap-2 rounded-md bg-slate-950 px-3 text-sm font-medium text-white" to="/community">
+              <Link className="btn-primary gap-2" to="/community">
                 共建资源
                 <ChevronRight className="h-4 w-4" />
               </Link>
