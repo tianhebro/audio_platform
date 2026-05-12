@@ -1,27 +1,79 @@
 import { Link } from 'react-router-dom';
-import { CTASection } from '../components/CTASection';
-import { DemoCard } from '../components/DemoCard';
-import { HeroSection } from '../components/HeroSection';
-import { InsightCard } from '../components/InsightCard';
+import { Activity, Database, Download, UploadCloud } from 'lucide-react';
 import { ResourceCard } from '../components/ResourceCard';
-import { SectionHeader } from '../components/SectionHeader';
-import { TaskCard } from '../components/TaskCard';
-import { TutorialCard } from '../components/TutorialCard';
-import { demos } from '../data/demos';
-import { insights } from '../data/insights';
 import { resources } from '../data/resources';
-import { papers } from '../data/research';
-import { featuredTaskSlugs, tasks } from '../data/tasks';
-import { tutorials } from '../data/tutorials';
+
+const stats = [
+  { label: '做种', value: '128', icon: UploadCloud },
+  { label: '正在下载', value: '36', icon: Download },
+  { label: '已完成', value: '2.4k', icon: Database },
+  { label: '贡献流量', value: '18TB', icon: Activity },
+];
+
 export function Home() {
-  const featuredTasks = tasks.filter((task) => featuredTaskSlugs.includes(task.slug));
-  return <>
-    <HeroSection />
-    <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:px-8"><SectionHeader eyebrow="Task Navigator" title="从任务进入声音 AI 世界" description="用任务图谱串联教程、数据集、模型、Benchmark、Demo 与趋势观察。" /><div className="mt-8 grid gap-5 md:grid-cols-3">{featuredTasks.map((task) => <TaskCard key={task.slug} task={task} />)}</div></section>
-    <section className="bg-slate-50"><div className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:px-8"><SectionHeader eyebrow="Getting Started" title="新手上路：先建立声音 AI 的全局地图" description="从概念、任务、工具到可运行 Demo，用渐进式路径降低学习门槛。" /><div className="mt-8 grid gap-5 md:grid-cols-3">{tutorials.slice(0, 3).map((item) => <TutorialCard key={item.title} tutorial={item} />)}</div></div></section>
-    <section className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:px-8"><div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"><SectionHeader eyebrow="Resources" title="精选资源库" description="先用结构化 mock 数据展示数据集、模型、论文、Benchmark 和工具。" /><Link className="btn-secondary" to="/resources">查看全部资源</Link></div><div className="mt-8 grid gap-5 md:grid-cols-3">{resources.slice(0, 3).map((item) => <ResourceCard key={item.name} resource={item} />)}</div></section>
-    <section className="bg-slate-50"><div className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:px-8"><SectionHeader eyebrow="Online Labs" title="在线 Demo 推荐" description="当前为前端模拟交互，预留后续接入真实推理服务、任务队列和结果存储。" /><div className="mt-8 grid gap-5 lg:grid-cols-3">{demos.map((demo) => <DemoCard key={demo.slug} demo={demo} />)}</div></div></section>
-    <section className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:grid-cols-[.95fr_1.05fr] md:px-6 lg:px-8"><div><SectionHeader eyebrow="Research" title="研究与资讯速递" description="围绕论文、开源项目、Benchmark 变化建立研究入口。" /><div className="mt-8 space-y-4">{papers.map((paper) => <div key={paper.title} className="rounded-3xl border border-slate-200 bg-white p-5"><span className="badge">{paper.area}</span><h3 className="mt-3 font-bold text-slate-950">{paper.title}</h3><p className="mt-2 text-sm text-slate-600">{paper.note}</p></div>)}</div></div><div><SectionHeader eyebrow="Trends" title="趋势观察" description="用编辑精选和观点型内容帮助从业者跟上方向变化。" /><div className="mt-8 grid gap-5">{insights.map((insight) => <InsightCard key={insight.title} insight={insight} />)}</div></div></section>
-    <div className="mx-auto max-w-7xl px-4 pb-16 md:px-6 lg:px-8"><CTASection /></div>
-  </>;
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-8 md:px-6">
+      <div className="mb-6 text-sm text-slate-400">AudioSphere / 首页 / 数据集</div>
+
+      <div className="rounded-md border border-slate-200 bg-white p-6">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <h1 className="text-4xl font-semibold tracking-tight text-slate-950">声音 AI 开放资源库</h1>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">
+              我们收集开放音频数据集、模型、论文和工具，并按任务图谱提供统一入口。
+            </p>
+          </div>
+          <Link className="inline-flex h-10 items-center justify-center rounded-md bg-slate-950 px-4 text-sm font-medium text-white" to="/resources">
+            浏览全部资源
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div key={item.label} className="rounded-md border border-slate-200 bg-slate-50 p-4">
+                <div className="flex items-center justify-between text-sm text-slate-500">
+                  <span>{item.label}</span>
+                  <Icon className="h-4 w-4" />
+                </div>
+                <p className="mt-3 text-3xl font-semibold text-slate-950">{item.value}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="mt-8 grid gap-6 xl:grid-cols-[1fr_260px]">
+        <div className="overflow-hidden rounded-md border border-slate-200 bg-white">
+          <div className="border-b border-slate-200 px-5 py-4">
+            <h2 className="font-semibold text-slate-950">最近更新</h2>
+            <p className="mt-1 text-sm text-slate-500">结构参考 HyperAI 数据集页，信息流以高密度列表呈现。</p>
+          </div>
+          {resources.slice(0, 6).map((item) => (
+            <ResourceCard key={item.name} resource={item} />
+          ))}
+        </div>
+
+        <aside className="space-y-5">
+          <section className="rounded-md border border-slate-200 bg-white p-4">
+            <h2 className="text-sm font-semibold text-slate-950">任务/问题</h2>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {['语音识别', '语音合成', '音频增强', '音乐生成', '音频分类', '音频大模型'].map((item) => (
+                <span key={item} className="rounded bg-slate-100 px-2 py-1 text-xs text-slate-500">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </section>
+          <section className="rounded-md border border-slate-200 bg-white p-4">
+            <h2 className="text-sm font-semibold text-slate-950">共建提示</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-500">
+              资源条目采用统一字段：名称、类别、任务、规模、更新时间、标签和外链，后续可平滑接入 API。
+            </p>
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
 }
