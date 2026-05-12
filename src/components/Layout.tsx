@@ -25,22 +25,22 @@ const navGroups = [
   {
     title: '资源',
     items: [
-      { label: '任务图谱', href: '/tasks', icon: Boxes },
-      { label: '教程', href: '/tutorials', icon: BookOpen },
-      { label: '资源库', href: '/resources', icon: Database },
-      { label: '研究论文', href: '/research', icon: FileText },
+      { label: '任务导航', href: '/tasks', icon: Boxes },
+      { label: '学习中心', href: '/tutorials', icon: BookOpen },
+      { label: '资源中心', href: '/resources', icon: Database },
+      { label: '研究与趋势', href: '/research', icon: FileText },
     ],
   },
   {
     title: '基准与实践',
     items: [
-      { label: '在线 Demo', href: '/demos', icon: FlaskConical },
+      { label: 'Demo 体验', href: '/demos', icon: FlaskConical },
       { label: '趋势观察', href: '/trends', icon: BarChart3 },
     ],
   },
   {
     title: '社区',
-    items: [{ label: '共建社区', href: '/community', icon: Users }],
+    items: [{ label: '社区与用户中心', href: '/community', icon: Users }],
   },
 ];
 
@@ -54,7 +54,7 @@ export function Layout() {
           </span>
           <span>
             <span className="block text-base font-semibold leading-5 text-slate-950">AudioSphere</span>
-            <span className="block text-xs text-blue-600">声音 AI 资源社区</span>
+            <span className="block text-xs text-blue-600">统一入口 · 国产化适配</span>
           </span>
         </Link>
 
@@ -92,9 +92,9 @@ export function Layout() {
           <div className="rounded-md border border-blue-100 bg-blue-50/70 p-3">
             <div className="flex items-center gap-2 text-sm font-semibold text-blue-800">
               <LifeBuoy className="h-4 w-4" />
-              数据集支持
+              国产化特色
             </div>
-            <p className="mt-2 text-xs leading-5 text-slate-600">提交音频数据、模型和论文线索，完善社区索引。</p>
+            <p className="mt-2 text-xs leading-5 text-slate-600">聚合国内模型、数据、方案与效果对比，支撑调研和落地。</p>
           </div>
         </div>
       </aside>
