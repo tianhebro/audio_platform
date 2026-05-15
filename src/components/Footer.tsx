@@ -13,17 +13,20 @@ export function Footer() {
         <div>
           <p className="font-semibold text-slate-950">产品</p>
           <div className="mt-3 grid gap-2 text-sm text-slate-500">
-            <Link to="/resources">资源库</Link>
+            <Link to="/datasets">数据集</Link>
+            <Link to="/models">模型</Link>
+            <Link to="/repositories">开源仓库</Link>
             <Link to="/tutorials">教程</Link>
-            <Link to="/demos">在线 Demo</Link>
+            <Link to="/workshop">数据工坊</Link>
           </div>
         </div>
         <div>
           <p className="font-semibold text-slate-950">社区</p>
           <div className="mt-3 grid gap-2 text-sm text-slate-500">
             <Link to="/community">共建资源</Link>
-            <Link to="/trends">趋势观察</Link>
-            <Link to="/research">研究论文</Link>
+            <Link to="/localization">国产化适配</Link>
+            <Link to="/news">行业资讯</Link>
+            <Link to="/papers">论文库</Link>
           </div>
         </div>
       </div>

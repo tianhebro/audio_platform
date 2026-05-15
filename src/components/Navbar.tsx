@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Bookmark, Menu, Search, X, Zap } from 'lucide-react';
 const navItems = [
-  ['首页', '/'], ['任务', '/tasks'], ['教程', '/tutorials'], ['资源', '/resources'], ['Demo', '/demos'], ['研究', '/research'], ['趋势', '/trends'], ['社区', '/community'],
+  ['首页', '/'], ['任务', '/tasks'], ['数据集', '/datasets'], ['模型', '/models'], ['开源仓库', '/repositories'], ['教程', '/tutorials'], ['Demo', '/demos'], ['研究', '/research'], ['趋势', '/trends'], ['社区', '/community'],
 ] as const;
 export function Navbar() {
   const [open, setOpen] = useState(false);
