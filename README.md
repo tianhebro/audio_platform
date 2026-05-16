@@ -1,37 +1,55 @@
-# AudioSphere 声音 AI 社区 Demo
+# AudioSphere 声音 AI 社区平台
 
-“声音 AI 的统一入口：让新手看得懂，让研究者找得到，让从业者跟得上。”
+AudioSphere 是一个面向声音 AI 的静态前端原型，目标是把任务导航、数据集、模型、开源仓库、教程、论文、行业资讯、国产化适配、数据工坊和用户中心组织成一个统一入口。
 
-这是一个基于 **React + Vite + TypeScript + Tailwind CSS** 的静态演示网站，用本地 mock data 搭建声音 AI 聚合平台 / 社区入口的信息架构、页面骨架、品牌视觉和基础交互。项目可直接部署到 GitHub Pages。
+当前项目基于 **React + Vite + TypeScript + Tailwind CSS** 实现，数据全部来自本地 mock data，可直接构建并部署到 GitHub Pages。
 
-## 当前实现了什么
+## 当前功能
 
-- 首页：品牌 Hero、任务入口、新手教程、精选资源、在线 Demo、研究资讯、趋势观察、订阅引导。
-- 任务：覆盖 ASR、TTS、声音克隆、声纹识别、音频增强、声源分离、音频分类、音乐生成、音频大模型等任务。
-- 任务详情：实现 `/tasks/asr`、`/tasks/tts`、`/tasks/audio-enhancement` 三个完整详情示例。
-- 教程：按阶段与任务筛选，并支持前端关键词搜索。
-- 资源：数据集、模型、论文、Benchmark、工具 Tab 筛选与搜索。
-- Demo：在线语音识别、TTS、降噪对比三个 mock 交互卡片。
-- 研究：论文速递、开源项目、Benchmark 观察。
-- 趋势：方向图谱、专题调研、月度观察、行业趋势卡片。
-- 社区：投稿资源、提交 Demo、共建方向、FAQ 占位入口。
+- 首页工作台：知识库问答入口、常见问题、个人资源统计、教程列表、数据集列表、行业资讯、任务入口和最新论文。
+- 任务导航：覆盖 ASR、TTS、声音克隆、声纹识别、音频增强、声源分离、音频分类、音乐生成、音频大模型等方向。
+- 独立资源入口：数据集、模型、开源仓库分别作为一级页面，支持左侧标签筛选和双列紧凑列表。
+- 资源详情页：支持 `/datasets/:id`、`/models/:id`、`/repositories/:id`，展示介绍、标签、统计、使用方式、指标、关联教程/论文和快捷操作。
+- 学习中心：按难度、任务、教学形式、国产化/国际化筛选教程，展示学习路线和学习进度。
+- 论文库：按 ASR、TTS、降噪、分类、声音克隆、多模态等任务分类浏览论文。
+- 行业资讯：报道式资讯页面，包含左侧图文报道流和右侧热门资讯。
+- 国产化全栈适配专区：展示智算底座矩阵、硬件/框架/任务/合规筛选、沉浸式瀑布流方案卡、国产化成熟度、性能雷达、TCO、生态地图、国产音频芯片墙和安全合规优势。
+- 音频数据工坊：模拟选择数据集、第三方链接、预处理方法和参数，执行 mock 任务并下载结果。
+- 在线 Demo：ASR、TTS、降噪对比的前端 mock 体验。
+- 用户中心：静态展示个人资料、学习进度、浏览历史、收藏夹、项目贡献、订阅和设置。
 
-## 真实功能与 Mock 边界
+## 路由结构
 
-### 已实现的真实前端功能
+```text
+/                         首页
+/tasks                    任务导航
+/tasks/:slug              任务详情
+/datasets                 数据集列表
+/datasets/:id             数据集详情
+/models                   模型列表
+/models/:id               模型详情
+/repositories             开源仓库列表
+/repositories/:id         开源仓库详情
+/tutorials                学习中心
+/papers                   论文库
+/news                     行业资讯
+/localization             国产化全栈适配专区
+/workshop                 音频数据工坊
+/demos                    在线 Demo
+/trends                   趋势观察
+/community                社区入口
+/user                     用户中心
+```
 
-- 多页面路由与导航跳转。
-- 响应式布局，优先桌面端并兼容移动端。
-- 教程页、资源页前端搜索与标签筛选。
-- Demo 页输入、上传占位、音频控件、模拟推理结果展示。
-- GitHub Pages 静态构建与自动部署 workflow。
+## Mock 边界
 
-### 当前仍为 Mock / 占位
+已实现的是完整前端原型，不包含真实后端：
 
-- 所有数据来自 `src/data/*.ts` 本地结构化 mock data。
-- Demo 不调用真实模型服务，结果由前端模拟生成。
-- 登录 / 注册、收藏 / 订阅、投稿表单和外链均为占位。
-- 搜索为前端过滤，未接后端全文检索或向量检索。
+- 所有内容来自 `src/data/*.ts` 本地 mock 数据。
+- 首页知识库问答会请求 `POST /api/knowledge-chat`，当前仅预留接口，未实现后端。
+- Demo、数据工坊、收藏、下载、快速克隆、导出部署清单等操作均为前端展示态。
+- 用户中心为静态 mock，不包含真实登录、权限、数据库或持久化。
+- 资源外部主页、镜像仓库、政策咨询等入口为占位。
 
 ## 技术栈
 
@@ -42,64 +60,77 @@
 - React Router
 - Lucide React Icons
 
-## 本地运行命令
+## 本地运行
 
 ```bash
 npm install
 npm run dev
 ```
 
-本地开发地址通常为：`http://localhost:5173/`。
-
-## 构建与预览
-
-```bash
-npm run build
-npm run preview
-```
-
-构建产物输出到 `dist/`。构建脚本会复制 `dist/index.html` 为 `dist/404.html`，以兼容 GitHub Pages 上的 SPA 直接访问路由。
-
-## GitHub Pages 部署步骤
-
-推荐仓库名：`aduio-platform` 或 `audio-ai-community`。
-
-1. 将项目推送到 GitHub 仓库。
-2. 在 GitHub 仓库中进入 **Settings → Pages**。
-3. 在 **Build and deployment** 中选择 **GitHub Actions**。
-4. 确认 `.github/workflows/deploy.yml` 已存在。
-5. 推送到 `main` 分支后，GitHub Actions 会执行：
-   - `npm install`
-   - `VITE_BASE_PATH=/${{ github.event.repository.name }}/ npm run build`
-   - 上传 `dist/` 到 GitHub Pages
-
-> 说明：仓库已提交 `package-lock.json`，可避免 GitHub Actions 在启用 npm cache 或依赖检测时出现 `Dependencies lock file is not found`。workflow 同时设置了 `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`，用于提前切换 JavaScript Actions 到 Node.js 24 运行时，消除 Node.js 20 deprecation warning。
-
-6. 部署完成后访问：
+默认开发地址通常为：
 
 ```text
-https://<your-github-username>.github.io/<repository-name>/
+http://localhost:5173/
 ```
 
-如果你使用自定义域名或用户站点根路径，可将 `VITE_BASE_PATH` 调整为 `/`。
+如果端口被占用，Vite 会自动切换到下一个可用端口。
+
+## 类型检查与构建
+
+```bash
+npm run typecheck
+npm run build
+```
+
+构建产物输出到 `dist/`。构建脚本会复制：
+
+```text
+dist/index.html -> dist/404.html
+```
+
+用于兼容 GitHub Pages 上 SPA 子路由直接访问和刷新。
+
+## GitHub Pages 部署
+
+项目已包含 `.github/workflows/deploy.yml`。推送到 `main` 后，GitHub Actions 会执行：
+
+```bash
+npm install
+VITE_BASE_PATH=/${{ github.event.repository.name }}/ npm run build
+```
+
+然后上传 `dist/` 到 GitHub Pages。
+
+仓库 Pages 设置建议：
+
+1. 进入 GitHub 仓库 `Settings -> Pages`
+2. `Build and deployment` 选择 `GitHub Actions`
+3. 推送 `main` 分支等待 Actions 完成
+
+访问地址格式：
+
+```text
+https://<github-username>.github.io/<repository-name>/
+```
+
+如果使用用户根站点或自定义域名，可将 `VITE_BASE_PATH` 调整为 `/`。
 
 ## 目录结构
 
 ```text
-.github/workflows/deploy.yml     # GitHub Pages 自动部署
-src/components/                  # 复用 UI 组件
-src/data/                        # 本地结构化 mock 数据
-src/pages/                       # 页面级组件
-src/main.tsx                     # 路由入口
-src/index.css                    # Tailwind 与全局样式
-vite.config.ts                   # Vite 配置，支持 VITE_BASE_PATH
+.github/workflows/deploy.yml     GitHub Pages 自动部署
+src/components/                  复用 UI 组件
+src/data/                        本地 mock 数据
+src/pages/                       页面级组件
+src/main.tsx                     路由入口
+src/index.css                    Tailwind 与全局样式
+vite.config.ts                   Vite 配置，支持 VITE_BASE_PATH
 ```
 
-## 后续演进建议
+## 后续可接入能力
 
-1. **真实 API 层**：新增 `src/services/`，把当前 `src/data/*.ts` 替换成 REST/GraphQL/API SDK 调用。
-2. **真实 Demo 服务**：为 ASR/TTS/降噪接入模型推理 API，加入任务队列、轮询、失败重试和结果缓存。
-3. **用户系统**：接入 GitHub/OAuth 登录，支持收藏、订阅、提交资源、提交 Demo。
-4. **搜索能力**：从前端过滤升级为 Meilisearch/Typesense/Elasticsearch 或向量检索。
-5. **内容工作流**：引入 CMS 或 MDX，支持论文解读、教程、趋势报告的版本化发布。
-6. **安全与合规**：声音克隆与生成任务加入授权、溯源、水印、滥用检测和内容审核说明。
+- 真实知识库检索：接入后端 RAG、全文检索或向量检索。
+- 真实模型推理：为 ASR、TTS、降噪、国产算力实验室接入推理 API。
+- 真实账户系统：接入 OAuth、收藏、订阅、投稿、项目管理和学习进度持久化。
+- 资源内容工作流：接入 CMS、MDX 或数据库，支持资源审核和版本发布。
+- 国产化部署闭环：接入真实镜像仓库、压测服务、硬件队列、TCO 报告导出和信创政策咨询。
