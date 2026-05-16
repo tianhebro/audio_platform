@@ -83,11 +83,28 @@ export type LocalizationSolution = {
   provider: string;
   task: TaskCategory;
   vendor: string;
+  computeBase: '华为昇腾' | '寒武纪' | '海光' | '摩尔线程' | '燧原';
+  framework: 'MindSpore' | 'PaddlePaddle' | '国产优化版 PyTorch' | '国产优化版 TensorFlow';
   version: string;
   updated: string;
+  driverVersion: string;
   certified: boolean;
+  compliance: string[];
+  selfRelianceScore: number;
+  maturity: 'L1 简单迁移' | 'L2 框架适配' | 'L3 算子优化' | 'L4 生产验证' | 'L5 全栈深度优化';
+  depthScore: number;
+  costPerformance: number;
+  industryHeat: number;
   metrics: string[];
   comparison: { domestic: number; international: number; label: string };
+  radar: { label: string; domestic: number; international: number }[];
+  tco: { domestic: number; international: number; saving: string };
+  ecosystem: string[];
+  engineering: string[];
+  scenarios: string[];
+  policies: string[];
+  chips: string[];
+  securityAdvantage: string;
   summary: string;
   tags: string[];
 };
@@ -383,13 +400,35 @@ export const localizationSolutions: LocalizationSolution[] = [
     provider: 'AudioSphere Lab',
     task: 'ASR',
     vendor: 'ModelScope + 私有化推理',
+    computeBase: '华为昇腾',
+    framework: 'MindSpore',
     version: 'v2.4',
     updated: '2026-05-13',
+    driverVersion: 'CANN 8.1.RC2',
     certified: true,
+    compliance: ['信创认证', '数据不出境', '等保三级适配'],
+    selfRelianceScore: 92,
+    maturity: 'L5 全栈深度优化',
+    depthScore: 95,
+    costPerformance: 88,
+    industryHeat: 91,
     metrics: ['CER 5.8%', 'RTF 0.18', '热词召回 92%'],
     comparison: { domestic: 88, international: 84, label: '中文长音频综合分' },
+    radar: [
+      { label: '精度', domestic: 88, international: 84 },
+      { label: '能效', domestic: 91, international: 76 },
+      { label: '内存', domestic: 86, international: 78 },
+      { label: '稳定', domestic: 93, international: 82 },
+    ],
+    tco: { domestic: 68, international: 100, saving: '预计三年 TCO 降低 32%' },
+    ecosystem: ['昇腾芯片', 'openEuler', 'MindSpore Serving', '会议纪要应用'],
+    engineering: ['AscendCL 推理脚手架', '热词图编译优化', '流式批处理避坑指南'],
+    scenarios: ['政务会议', '金融双录', '信创办公'],
+    policies: ['地方智算补贴', '信创目录申报', '等保测评咨询'],
+    chips: ['恒玄端侧唤醒联调', '瑞昱国产线音频前处理'],
+    securityAdvantage: '针对敏感会议音频增加本土化实体识别、涉密词召回和数据不出境审计链路。',
     summary: '面向会议纪要、字幕和质检场景，强调中文热词、低延迟和私有化部署。',
-    tags: ['国产化', '会议转写', '私有部署'],
+    tags: ['国产卡100%兼容', '信创推荐', '生产环境已验证', '开源自研'],
   },
   {
     id: 'tts-brand-voice',
@@ -398,13 +437,35 @@ export const localizationSolutions: LocalizationSolution[] = [
     provider: '通义实验室',
     task: 'TTS',
     vendor: 'CosyVoice',
+    computeBase: '寒武纪',
+    framework: '国产优化版 PyTorch',
     version: 'v1.8',
     updated: '2026-05-09',
+    driverVersion: 'MLU Driver 5.12 / Triton 2.4',
     certified: true,
+    compliance: ['数据不出境', '等保三级适配'],
+    selfRelianceScore: 86,
+    maturity: 'L4 生产验证',
+    depthScore: 82,
+    costPerformance: 84,
+    industryHeat: 89,
     metrics: ['MOS 4.35', '音色相似度 91%', '合成延迟 320ms'],
     comparison: { domestic: 86, international: 82, label: '中文自然度偏好' },
+    radar: [
+      { label: '精度', domestic: 86, international: 82 },
+      { label: '能效', domestic: 84, international: 74 },
+      { label: '内存', domestic: 80, international: 76 },
+      { label: '稳定', domestic: 88, international: 80 },
+    ],
+    tco: { domestic: 72, international: 100, saving: '品牌音色私有化成本降低 28%' },
+    ecosystem: ['寒武纪 MLU', '国产 PyTorch Runtime', '音色资产库', '数字人应用'],
+    engineering: ['声码器算子融合', '多音色缓存策略', '品牌音色授权流程'],
+    scenarios: ['金融客服', '有声书', '车载播报'],
+    policies: ['数据合规评估', '算法备案咨询'],
+    chips: ['恒玄低功耗播放链路', '国产 DSP 后处理'],
+    securityAdvantage: '支持授权音色指纹校验，降低未经授权声音复刻和敏感播报风险。',
     summary: '支持少样本音色适配、情绪控制和企业内部素材授权流程。',
-    tags: ['TTS', '音色复刻', '合规'],
+    tags: ['国产卡100%兼容', '开源自研', '生产环境已验证', '音色合规'],
   },
   {
     id: 'denoise-edge',
@@ -413,13 +474,35 @@ export const localizationSolutions: LocalizationSolution[] = [
     provider: '声学工程联合组',
     task: '声音增强',
     vendor: '国产 NPU',
+    computeBase: '燧原',
+    framework: 'PaddlePaddle',
     version: 'v0.9',
     updated: '2026-04-30',
+    driverVersion: 'Enflame TopsRider 3.2',
     certified: false,
+    compliance: ['数据不出境'],
+    selfRelianceScore: 78,
+    maturity: 'L3 算子优化',
+    depthScore: 76,
+    costPerformance: 93,
+    industryHeat: 74,
     metrics: ['PESQ +0.42', 'CPU 18%', '端到端 24ms'],
     comparison: { domestic: 79, international: 81, label: '实时听感评分' },
+    radar: [
+      { label: '精度', domestic: 79, international: 81 },
+      { label: '能效', domestic: 90, international: 72 },
+      { label: '内存', domestic: 88, international: 78 },
+      { label: '稳定', domestic: 76, international: 80 },
+    ],
+    tco: { domestic: 61, international: 100, saving: '端侧与边缘混部成本降低 39%' },
+    ecosystem: ['燧原 GCU', 'Paddle Inference', '边缘网关', '会议硬件'],
+    engineering: ['实时帧缓存模板', 'NPU 算子替换清单', '端云协同参数建议'],
+    scenarios: ['车载语音', '会议硬件', '安防拾音'],
+    policies: ['边缘算力补贴', '国产硬件测评'],
+    chips: ['恒玄 ANC 链路', '瑞昱国产线麦克风阵列'],
+    securityAdvantage: '增强前置本土敏感音频检测，可在边缘侧完成异常喊叫、违规录音和涉密语音提示。',
     summary: '聚焦车载、会议硬件和可穿戴场景，提供低功耗模型与部署参数。',
-    tags: ['端侧', '降噪', '国产芯片'],
+    tags: ['国产卡100%兼容', '信创推荐', '端侧音频芯片', '低功耗'],
   },
 ];
 
