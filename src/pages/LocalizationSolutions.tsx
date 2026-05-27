@@ -15,10 +15,6 @@ export function LocalizationSolutions() {
           <article key={item.id} className="rounded-md border border-blue-100 bg-white p-4">
             <h2 className="font-semibold text-slate-950">{item.name}</h2>
             <p className="mt-2 text-sm text-slate-600">{item.summary}</p>
-            <div className="mt-3 rounded-md bg-blue-50/60 p-3 text-xs text-slate-700">
-              推荐部署路径：{item.pipeline.trainFramework} → {item.pipeline.ir} → {item.pipeline.targetBackend}
-              <div className="mt-1">落地状态：{item.adaptationStatus}｜{item.hasDeployDoc ? '含部署文档' : '缺部署文档'}｜{item.hasImage ? '含镜像' : '缺镜像'}</div>
-            </div>
             <div className="mt-3">
               <p className="text-xs font-semibold text-slate-500">行业场景</p>
               <div className="mt-2 flex flex-wrap gap-2">

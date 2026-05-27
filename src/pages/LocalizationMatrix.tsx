@@ -19,8 +19,6 @@ export function LocalizationMatrix() {
               <th className="px-4 py-3 font-semibold">算力底座</th>
               <th className="px-4 py-3 font-semibold">框架</th>
               <th className="px-4 py-3 font-semibold">成熟度</th>
-              <th className="px-4 py-3 font-semibold">落地状态</th>
-              <th className="px-4 py-3 font-semibold">镜像/压测/文档</th>
             </tr>
           </thead>
           <tbody>
@@ -31,14 +29,6 @@ export function LocalizationMatrix() {
                 <td className="px-4 py-3 text-slate-600">{item.computeBase}</td>
                 <td className="px-4 py-3 text-slate-600">{item.framework}</td>
                 <td className="px-4 py-3"><span className="rounded bg-violet-50 px-2 py-1 text-xs font-medium text-violet-700">{item.maturity}</span></td>
-                <td className="px-4 py-3">
-                  <span className={`rounded px-2 py-1 text-xs font-medium ${item.adaptationStatus === '可直接落地' ? 'bg-emerald-50 text-emerald-700' : item.adaptationStatus === '需二次适配' ? 'bg-amber-50 text-amber-700' : 'bg-slate-100 text-slate-700'}`}>
-                    {item.adaptationStatus}
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-xs text-slate-600">
-                  {item.hasImage ? '镜像✅' : '镜像❌'} / {item.hasBenchmark ? '压测✅' : '压测❌'} / {item.hasDeployDoc ? '文档✅' : '文档❌'}
-                </td>
               </tr>
             ))}
           </tbody>

@@ -14,10 +14,7 @@ export function LocalizationBenchmark() {
         {localizationSolutions.map((item) => (
           <article key={item.id} className="rounded-md border border-blue-100 bg-white p-4">
             <h2 className="font-semibold text-slate-950">{item.name}</h2>
-            <p className="mt-2 text-xs text-slate-500">{item.computeBase} · {item.framework} · 最近压测 {item.benchmarkDate}</p>
-            <div className="mt-2 text-xs text-slate-500">
-              Pipeline：{item.pipeline.trainFramework} → {item.pipeline.ir} → {item.pipeline.targetBackend}
-            </div>
+            <p className="mt-2 text-xs text-slate-500">{item.computeBase} · {item.framework}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {item.metrics.map((metric) => (
                 <span key={metric} className="rounded bg-blue-50 px-2 py-1 text-xs text-blue-700">{metric}</span>
