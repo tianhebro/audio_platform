@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import {
   BarChart3,
+  BadgeCheck,
   BookOpen,
   Boxes,
   ChevronRight,
@@ -46,9 +47,19 @@ const navGroups = [
     ],
   },
   {
+    title: '国产化专区 · FEATURED',
+    items: [
+      { label: '国产化总览', href: '/localization', icon: Globe2 },
+      { label: '适配矩阵', href: '/localization/matrix', icon: BadgeCheck },
+      { label: '性能评测中心', href: '/localization/benchmark', icon: BarChart3 },
+      { label: '落地方案包', href: '/localization/solutions', icon: Wrench },
+      { label: '国产算力实验室', href: '/demos', icon: FlaskConical },
+      { label: '数据脱敏工坊', href: '/workshop', icon: Database },
+    ],
+  },
+  {
     title: '研究与实践',
     items: [
-      { label: '国产化适配', href: '/localization', icon: Globe2 },
       { label: '行业资讯', href: '/news', icon: Newspaper },
       { label: '数据工坊', href: '/workshop', icon: Wrench },
       { label: '在线 Demo', href: '/demos', icon: FlaskConical },
