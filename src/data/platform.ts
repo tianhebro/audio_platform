@@ -76,6 +76,14 @@ export type TutorialItem = {
   tags: string[];
 };
 
+export type AdaptationStatus = '可直接落地' | '需二次适配' | 'PoC 验证中';
+
+export type LocalizationPipeline = {
+  trainFramework: 'PyTorch' | 'TensorFlow';
+  ir: 'ONNX' | 'TorchScript' | 'MINDIR';
+  targetBackend: 'ncnn' | 'MNN' | 'TNN' | 'RKNN' | 'Ascend ACL/OM' | 'MindSpore Lite' | 'torch_mlu' | 'ONNX Runtime ROCm';
+};
+
 export type LocalizationSolution = {
   id: string;
   name: string;
@@ -107,6 +115,12 @@ export type LocalizationSolution = {
   securityAdvantage: string;
   summary: string;
   tags: string[];
+  adaptationStatus: AdaptationStatus;
+  hasImage: boolean;
+  hasBenchmark: boolean;
+  hasDeployDoc: boolean;
+  benchmarkDate: string;
+  pipeline: LocalizationPipeline;
 };
 
 export type PaperItem = {
@@ -147,6 +161,7 @@ export type UserProfile = {
   projects: string[];
   subscriptions: string[];
 };
+
 
 export const resourceStats = [
   { label: '数据集数量', value: '128' },
@@ -429,6 +444,12 @@ export const localizationSolutions: LocalizationSolution[] = [
     securityAdvantage: '针对敏感会议音频增加本土化实体识别、涉密词召回和数据不出境审计链路。',
     summary: '面向会议纪要、字幕和质检场景，强调中文热词、低延迟和私有化部署。',
     tags: ['国产卡100%兼容', '信创推荐', '生产环境已验证', '开源自研'],
+    adaptationStatus: '可直接落地',
+    hasImage: true,
+    hasBenchmark: true,
+    hasDeployDoc: true,
+    benchmarkDate: '2026-05-16',
+    pipeline: { trainFramework: 'PyTorch', ir: 'ONNX', targetBackend: 'Ascend ACL/OM' },
   },
   {
     id: 'tts-brand-voice',
@@ -466,6 +487,12 @@ export const localizationSolutions: LocalizationSolution[] = [
     securityAdvantage: '支持授权音色指纹校验，降低未经授权声音复刻和敏感播报风险。',
     summary: '支持少样本音色适配、情绪控制和企业内部素材授权流程。',
     tags: ['国产卡100%兼容', '开源自研', '生产环境已验证', '音色合规'],
+    adaptationStatus: '需二次适配',
+    hasImage: true,
+    hasBenchmark: true,
+    hasDeployDoc: true,
+    benchmarkDate: '2026-05-12',
+    pipeline: { trainFramework: 'PyTorch', ir: 'ONNX', targetBackend: 'torch_mlu' },
   },
   {
     id: 'denoise-edge',
@@ -503,6 +530,12 @@ export const localizationSolutions: LocalizationSolution[] = [
     securityAdvantage: '增强前置本土敏感音频检测，可在边缘侧完成异常喊叫、违规录音和涉密语音提示。',
     summary: '聚焦车载、会议硬件和可穿戴场景，提供低功耗模型与部署参数。',
     tags: ['国产卡100%兼容', '信创推荐', '端侧音频芯片', '低功耗'],
+    adaptationStatus: 'PoC 验证中',
+    hasImage: false,
+    hasBenchmark: true,
+    hasDeployDoc: false,
+    benchmarkDate: '2026-05-02',
+    pipeline: { trainFramework: 'TensorFlow', ir: 'ONNX', targetBackend: 'RKNN' },
   },
 ];
 

@@ -7,6 +7,9 @@ import { Datasets } from './pages/Datasets';
 import { Demos } from './pages/Demos';
 import { Home } from './pages/Home';
 import { Localization } from './pages/Localization';
+import { LocalizationBenchmark } from './pages/LocalizationBenchmark';
+import { LocalizationMatrix } from './pages/LocalizationMatrix';
+import { LocalizationSolutions } from './pages/LocalizationSolutions';
 import { Models } from './pages/Models';
 import { News } from './pages/News';
 import { Papers } from './pages/Papers';
@@ -38,6 +41,9 @@ createRoot(document.getElementById('root')!).render(
           <Route path="repositories/:id" element={<ResourceDetail kind="repository" />} />
           <Route path="resources" element={<Datasets />} />
           <Route path="localization" element={<Localization />} />
+          <Route path="localization/matrix" element={<LocalizationMatrix />} />
+          <Route path="localization/benchmark" element={<LocalizationBenchmark />} />
+          <Route path="localization/solutions" element={<LocalizationSolutions />} />
           <Route path="papers" element={<Papers />} />
           <Route path="news" element={<News />} />
           <Route path="workshop" element={<Workshop />} />
