@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Community } from './pages/Community';
 import { Datasets } from './pages/Datasets';
@@ -26,7 +26,7 @@ import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
@@ -56,6 +56,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>,
 );
