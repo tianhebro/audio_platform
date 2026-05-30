@@ -27,11 +27,21 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build static site
-        run: VITE_BASE_PATH=/${{ github.event.repository.name }}/ npm run build
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          OWNER="${GITHUB_REPOSITORY_OWNER}"
+          if [ "$REPO_NAME" = "${OWNER}.github.io" ]; then
+            export VITE_BASE_PATH=/
+          else
+            export VITE_BASE_PATH="/$REPO_NAME/"
+          fi
+          echo "Using VITE_BASE_PATH=$VITE_BASE_PATH"
+          npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
+
   deploy:
     environment:
       name: github-pages
